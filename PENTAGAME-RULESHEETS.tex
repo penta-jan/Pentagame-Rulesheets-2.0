@@ -1,0 +1,237 @@
+\documentclass[DIV=19,paper=b5,12pt]{scrartcl}
+
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={Pentagame Regulae Rules Regeln Regles},
+pdfsubject={Pentagame Rules in Many Languages},
+pdfauthor={Jan Suchanek et al.},
+pdfkeywords={Pentagame board game rules explained latin english german deutsch latine francais russian chinese spanish espaniol}
+}
+
+\usepackage{polyglossia}
+\usepackage{xeCJK}
+\setmainlanguage{english}
+\setotherlanguages{french,ngerman,latin,bahasai,russian,greek,spanish,georgian}
+
+\DeclareTextCommandDefault{\cyrdash}{\hbox to.8em{---}~}
+
+\setmainfont{FreeSerif}
+\setsansfont{FreeSans}
+\newCJKfontfamily{\tradChinesefont}{AR PL UKai HK}[BoldFont=Noto Sans CJK TC Bold]
+
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{microtype}
+% \usepackage{CJKutf8}
+\usepackage{pgfpages,tikz,lipsum}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.multipart}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{automata, positioning}
+\usetikzlibrary{hobby}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{patterns}
+
+%\usepackage{CJK}
+\usepackage{tikz}
+\raggedbottom
+\raggedcolumns
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+\newcommand{\noun}[1]{\textsc{#1}}
+
+
+\newcounter{oldpage}
+
+
+\makeatletter
+\renewcommand\paragraph{%
+\@startsection{paragraph}{4}%
+{\z@}{1ex\@plus 1ex \@minus .2ex}%
+{0.2ex \@plus .2ex}%
+  {\sffamily\normalsize\bfseries}%
+ }
+ \makeatother
+
+
+%%% Document specific commands
+
+\newcommand{\myskip}{\smallskip}
+
+\newcommand{\headline}{{\LARGE{}Pentagame}}
+\newcommand{\tocent}{}
+\newcommand{\translator}{}
+
+\newcommand{\general}{}
+\newcommand{\choosext}{}
+\newcommand{\choosex}{}
+\newcommand{\setupt}{}
+\newcommand{\setup}{}
+\newcommand{\objectivet}{}
+\newcommand{\objective}{}
+\newcommand{\rulest}{}
+\newcommand{\rules}{}
+\newcommand{\website}{\textsf{\textbf{pentagame.org}}}
+\newcommand{\layout}{
+\begin{centering}
+
+{\sffamily\LARGE{\textbf\headline}}
+\addcontentsline{toc}{section}{\tocent}
+
+\end{centering}
+
+\bigskip
+
+\hrulefill
+
+
+\begin{multicols}{2}
+
+%\noindent\hrulefill
+\general
+\paragraph*{\choosext}
+\choosex
+\paragraph*{\setupt}
+\setup
+\paragraph*{\objectivet}
+\objective
+
+
+\medskip
+\parbox{\columnwidth}{
+\paragraph*{\rulest}
+\rules
+}
+
+\end{multicols}}
+
+\setlength{\parskip}{0ex}
+\setlength{\parindent}{0cm}
+
+
+\title{
+\includegraphics[width=0.5\textwidth]{Pentagame_board_2018.png}\\
+Penta$\cdot$game}
+%\subtitle{by Jan Suchanek}
+\author{ \href{mailto:jan@pentagame.org}{\makeatletter jan@pentagame.org\makeatother} }
+\date{}
+
+%% Actual Document. Calling the content first, then printing the same layout.
+
+\begin{document}
+
+\maketitle
+
+
+ \begin{enumerate}
+    \centering
+        \item Every player has one piece on each corner
+        \item Black blocks sit on central nodes
+        \item Goal: Reach the coloured nodes opposite
+        \item Everything goes, but no jumping allowed
+        \item Replace blocks
+        \item Swap neighbouring pieces
+        \item Upon moving out, place a grey block
+        \item Three pieces out wins
+        \item Grey blocks are one time blocks
+        \item No repetition (Ko)
+    \end{enumerate}
+
+%\tableofcontents
+
+\newpage
+
+\phantomsection
+%\begin{multicols}{2}
+
+\input{illustrated.tex}
+
+\clearpage
+
+\input{english.tex}
+\layout
+\pagebreak
+
+\begin{otherlanguage}{ngerman}
+\input{deutsch.tex}
+\layout
+\pagebreak
+
+
+%\input{vulgaerdeutsch.tex}
+%\layout
+%\pagebreak
+
+\input{platt.tex}
+\layout 
+\pagebreak
+\end{otherlanguage}
+
+\begin{otherlanguage}{latin}
+\input{latine.tex}
+\setcounter{oldpage}{\thepage}
+\pagenumbering{Roman}
+\setcounter{page}{\theoldpage}
+
+\layout
+\end{otherlanguage}
+\pagebreak
+\pagenumbering{arabic}
+\stepcounter{oldpage}
+\setcounter{oldpage}{\theoldpage}
+\setcounter{page}{\theoldpage}
+
+\begin{otherlanguage}{french}
+\input{francais.tex}
+\layout
+\end{otherlanguage}
+\pagebreak
+
+\begin{otherlanguage}{russian}
+\input{russian.tex}
+\layout
+\end{otherlanguage}
+\pagebreak
+
+\begin{otherlanguage}{georgian}
+\input{georgian.tex}
+\layout
+\end{otherlanguage}
+\pagebreak
+
+\begin{otherlanguage}{spanish}
+\input{espaniol.tex}
+\layout
+\end{otherlanguage}
+\pagebreak
+
+\begin{otherlanguage}{greek}
+\input{greek.tex}
+{\footnotesize
+\layout}
+\end{otherlanguage}
+\pagebreak
+
+\begin{otherlanguage}{bahasai}
+\input{indonesian.tex}
+\layout
+\end{otherlanguage}
+\pagebreak
+
+{\tradChinesefont
+\input{tradchinese.tex}
+\layout}
+\pagebreak
+
+\input{simplechinese.tex}
+\layout
+
+%\end{multicols}
+
+
+\end{document}
